@@ -1,0 +1,309 @@
+/* 1. l-Asasiyat (Reset & Fonts) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #F8FAFC;
+    color: #1E293B;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* 2. Navbar (Header) */
+.navbar {
+    background: #ffffff;
+    border-b: 1px solid #E2E8F0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #0F172A;
+}
+
+.logo-icon { color: #2563EB; margin-right: 5px; }
+
+.nav-links a {
+    margin: 0 15px;
+    font-size: 0.9rem;
+    color: #64748B;
+    transition: color 0.2s;
+}
+
+.nav-links a.active, .nav-links a:hover { color: #2563EB; }
+
+.btn-admin {
+    background: #2563EB;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* 3. Hero Section (L-wajeha) */
+.main-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.subtitle {
+    color: #2563EB;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: #0F172A;
+    margin: 15px 0;
+}
+
+.hero-content h1 span { color: #2563EB; }
+
+.hero-content p { color: #64748B; margin-bottom: 30px; }
+
+/* Box dial l-ba7t (Search) */
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    max-width: 500px;
+}
+
+.search-box label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94A3B8;
+    text-transform: uppercase;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-group input {
+    flex: 1;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    padding: 12px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.form-group button {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 0 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* 4. Grid dial l-content (Tracking + Sidebar) */
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Tracking Card (Jiha dl-lissar) */
+.tracking-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #F1F5F9;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #F1F5F9;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.meta-text { font-size: 0.75rem; color: #94A3B8; }
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.status-livrée { background: #DCFCE7; color: #15803D; }
+.status-en-cours-de-route { background: #DBEAFE; color: #1D4ED8; }
+
+/* Timeline (Khwiyet dl-wa9t) */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 5px; bottom: 5px;
+    width: 2px; background: #E2E8F0;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.icon-marker {
+    position: absolute;
+    left: -30px; top: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #2563EB; color: white;
+    font-size: 0.7rem;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.step-pending .icon-marker { background: #E2E8F0; color: #94A3B8; }
+
+/* Driver Info */
+.driver-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #F8FAFC;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    max-width: 300px;
+}
+
+.driver-avatar {
+    width: 35px; height: 35px;
+    background: #DBEAFE; color: #1D4ED8;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-weight: bold; font-size: 0.8rem;
+}
+
+.driver-info .role { display: block; font-size: 0.65rem; color: #94A3B8; font-weight: 700; }
+.driver-info .name { font-size: 0.8rem; font-weight: 600; }
+
+.card-footer-details {
+    display: flex; gap: 40px;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 20px; margin-top: 20px;
+    font-size: 0.8rem;
+}
+.card-footer-details .title { color: #94A3B8; }
+.card-footer-details .value { font-weight: 600; }
+
+/* Sidebar (Jiha dl-imin) */
+.support-card {
+    background: #2563EB; color: white;
+    padding: 30px; border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.support-icon { font-size: 1.5rem; margin-bottom: 15px; }
+.support-card p { font-size: 0.8rem; opacity: 0.9; margin: 10px 0 20px 0; }
+.phone-number { font-size: 1.4rem; font-weight: bold; }
+
+.mini-stats-list {
+    background: white; padding: 20px;
+    border-radius: 16px; border: 1px solid #F1F5F9;
+}
+
+.list-row {
+    display: flex; justify-content: space-between;
+    padding: 12px 0; font-size: 0.85rem;
+    border-bottom: 1px solid #F1F5F9;
+}
+.list-row:last-child { border: none; }
+.list-row .badge { background: #EFF6FF; color: #2563EB; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+.list-row .count, .list-row .rate { font-weight: bold; }
+
+/* 5. Big Counters Strip (L-te7t) */
+.counters-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    border-top: 1px solid #E2E8F0;
+    margin-top: 60px; padding-top: 40px;
+}
+
+.counter-item .number {
+    font-size: 2.2rem; font-weight: 800; color: #2563EB;
+}
+
+.counter-item .label {
+    font-size: 0.75rem; font-weight: 700; color: #94A3B8;
+    text-transform: uppercase; margin-top: 5px;
+}
+
+/* 6. Footer */
+.main-footer {
+    background: white; border-top: 1px solid #E2E8F0;
+    margin-top: 60px; padding: 40px 0;
+    font-size: 0.8rem; color: #64748B;
+}
+
+.footer-container {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+}
+
+.brand-name { font-weight: bold; color: #0F172A; margin-bottom: 5px; }
+.footer-links a { margin-right: 20px; }
+.footer-links a:hover { color: #2563EB; }
+
+/* Alerts and Errors */
+.alert-error { background: #FEF2F2; color: #991B1B; padding: 15px; border-radius: 8px; border: 1px solid #FEE2E2; }
+.empty-state { text-align: center; color: #94A3B8; padding: 40px; border: 2px dashed #E2E8F0; border-radius: 12px; }
+
+/* 7. Responsive (Mobile) */
+@media (max-width: 768px) {
+    .hero-section, .content-grid, .counters-strip { grid-template-columns: 1fr; gap: 30px; }
+    .hero-image { display: none; }
+    .footer-container { flex-direction: column; text-align: center; }
+}
