@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div style="display:flex;gap:12px;margin-top:10px">
                     <button type="submit" class="btn btn-primary">💾 Enregistrer</button>
                     <a href="liste.php" class="btn btn-secondary">Annuler</a>
-                    <link rel="stylesheet" href="../style.css">
                 </div>
             </form>
         </div>

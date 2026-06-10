@@ -3,9 +3,15 @@ session_start();
 if (!isset($_SESSION['admin'])) { header("Location: ../connexion.php"); exit; }
 require '../db.php';
 
+$id = intval($_GET['id'] ?? 0);
+$stmt = $pdo->prepare("SELECT * FROM clients WHERE id = ?");
+$stmt->execute([$id]);
+$c = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$c) { header("Location: liste.php"); exit; }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pdo->prepare("INSERT INTO clients (nom,prenom,telephone,email,adresse) VALUES (?,?,?,?,?)")
-        ->execute([trim($_POST['nom']),trim($_POST['prenom']),trim($_POST['telephone']),trim($_POST['email']),trim($_POST['adresse'])]);
+    $pdo->prepare("UPDATE clients SET nom=?,prenom=?,telephone=?,email=?,adresse=? WHERE id=?")
+        ->execute([trim($_POST['nom']),trim($_POST['prenom']),trim($_POST['telephone']),trim($_POST['email']),trim($_POST['adresse']),$id]);
     header("Location: liste.php?success=1"); exit;
 }
 ?>
@@ -13,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter Client — Atlas Transport</title>
+    <title>Modifier Client — Atlas Transport</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -34,25 +40,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </aside>
     <main class="main-content">
         <div class="page-hdr">
-            <h2>➕ Ajouter un Client</h2>
+            <h2>✏️ Modifier le Client</h2>
             <a href="liste.php" class="btn btn-secondary">← Retour</a>
         </div>
         <div class="form-card">
-            <div class="form-section-title">Informations du client</div>
+            <div class="form-section-title">Modifier les informations</div>
             <form method="POST">
                 <div class="form-row">
-                    <div class="form-group"><label>Nom *</label><input type="text" name="nom" required placeholder="Ex: Benali"></div>
-                    <div class="form-group"><label>Prénom *</label><input type="text" name="prenom" required placeholder="Ex: Karim"></div>
+                    <div class="form-group"><label>Nom *</label><input type="text" name="nom" required value="<?= htmlspecialchars($c['nom']) ?>"></div>
+                    <div class="form-group"><label>Prénom *</label><input type="text" name="prenom" required value="<?= htmlspecialchars($c['prenom']) ?>"></div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group"><label>Téléphone</label><input type="tel" name="telephone" placeholder="06XXXXXXXX"></div>
-                    <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="email@exemple.com"></div>
+                    <div class="form-group"><label>Téléphone</label><input type="tel" name="telephone" value="<?= htmlspecialchars($c['telephone']) ?>"></div>
+                    <div class="form-group"><label>Email</label><input type="email" name="email" value="<?= htmlspecialchars($c['email']) ?>"></div>
                 </div>
-                <div class="form-group"><label>Adresse</label><input type="text" name="adresse" placeholder="Ville, Quartier..."></div>
+                <div class="form-group"><label>Adresse</label><input type="text" name="adresse" value="<?= htmlspecialchars($c['adresse']) ?>"></div>
                 <div style="display:flex;gap:12px;margin-top:10px">
                     <button type="submit" class="btn btn-primary">💾 Enregistrer</button>
                     <a href="liste.php" class="btn btn-secondary">Annuler</a>
-                    <link rel="stylesheet" href="../style.css">
                 </div>
             </form>
         </div>
